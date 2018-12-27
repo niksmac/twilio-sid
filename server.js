@@ -34,6 +34,29 @@ server.route({
   }
 });
 
+server.route({
+  method: "POST",
+  path: "/rates",
+  handler: function(request, h) {
+    const sid = request.payload.sid || "CA69f225dc2ebc10d92097edd8d088eb62";
+    const thisCallRate = request.payload.callRate || CALL_RATE;
+    return client
+      .calls(sid)
+      .fetch()
+      .then(call => {
+        const duration = call.duration;
+        const roundedDuration = duration / 60;
+        const callCost = Math.ceil(roundedDuration);
+        const actualCallRate = callCost * thisCallRate;
+        return {
+          rate: actualCallRate,
+          priceUnit: CALL_CURRENCY,
+          meta: call
+        };
+      });
+  }
+});
+
 const start = async function() {
   try {
     await server.start();
