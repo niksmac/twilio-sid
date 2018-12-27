@@ -12,6 +12,7 @@ Scope: Create an endpoint which takes the Twilio SID (a specific call) and creat
 
 - Run `nvm use`
 - Rum `cp .env.example .env` and fill in Twilio account details
+- Run `yarn` or `npm install`
 - Run `node server.js` or nodeomon, pm2 as you please.
 
 ## API
