@@ -1,0 +1,13 @@
+{
+  "name": "twilio-sid",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/niksmac/twilio-sid.git",
+  "license": "MPL-2.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "hapi": "^17.8.1",
+    "twilio": "^3.26.0"
+  }
+}
