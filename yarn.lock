@@ -190,6 +190,13 @@ catbox@10.x.x:
     hoek "6.x.x"
     joi "14.x.x"
 
+chargebee@^2.4.7:
+  version "2.4.7"
+  resolved "https://registry.yarnpkg.com/chargebee/-/chargebee-2.4.7.tgz#a2baa1ce1c9940b7c1728f3de1ba5377b17041fd"
+  integrity sha512-2fo5CZYDGTZ/GhEM3sW2w/loCYYDOZNcZkrjvHbuda8qNeNWmhCm0VGrTM4TqKkPUzEHDCGJL4foLXZ9/oN4qg==
+  dependencies:
+    q ">=1.0.1"
+
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.7.tgz#2d1d24317afb8abe95d6d2c0b07b57813539d828"
@@ -592,6 +599,11 @@ q@2.0.x:
     asap "^2.0.0"
     pop-iterate "^1.0.1"
     weak-map "^1.0.5"
+
+q@>=1.0.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
+  integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
 qs@~6.5.2:
   version "6.5.2"

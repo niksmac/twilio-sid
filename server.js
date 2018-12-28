@@ -8,6 +8,11 @@ const CALL_CURRENCY = process.env.CALL_CURRENCY;
 
 const Hapi = require("hapi");
 const client = require("twilio")(accountSid, authToken);
+const chargebee = require("chargebee");
+chargebee.configure({
+  site: "callanswering",
+  api_key: process.env.CB_API
+});
 
 const server = Hapi.server({
   host: "localhost",
@@ -40,7 +45,7 @@ server.route({
   handler: function(request, h) {
     const sid = request.payload.sid || "CA69f225dc2ebc10d92097edd8d088eb62";
     const thisCallRate = request.payload.callRate || CALL_RATE;
-    return client
+    client
       .calls(sid)
       .fetch()
       .then(call => {
@@ -53,6 +58,32 @@ server.route({
           priceUnit: CALL_CURRENCY,
           meta: call
         };
+      })
+      .then(rate => {
+        rate.k = "k";
+        chargebee.invoice
+          .create({
+            customer_id: "HngTogORDRflVaSqd",
+            charges: [
+              {
+                amount: 1000,
+                description: "Test Support charge"
+              }
+            ]
+          })
+          .request(function(error, result) {
+            if (error) {
+              //handle error
+              console.log(error);
+            } else {
+              console.log(result);
+              var invoice = result.invoice;
+              return "k";
+            }
+          });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
   }
 });
